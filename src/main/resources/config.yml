@@ -1,0 +1,77 @@
+# Please do not delete any entries of this Config.
+#  --------------------------------------------------------------------------------------
+# |In order to deactivate any functions please mind about these tips:                    |
+# |For numbers: Set the Value to 0.                                                      |
+# |For texts: Change to ''.                                                              |
+# |For booleans: Set to false.                                                           |
+# |For lists: Set NONE as the only value                                                 |
+#  --------------------------------------------------------------------------------------
+# Please mind the tips according to the entries.
+
+Config:
+
+  Prefix:
+    # This prefix is shown in front of the chosen plugin messages. At the end of the prefix you should reset the color codes using &r.
+    # The prefix can be added to every message using %PREFIX%.
+    plugin-prefix: '&c[Timed Items]&r'
+    # This prefix is shown in front of all plugin messages in the console
+    console-prefix: '[Timed Items]'
+
+
+  # At this part of the config you can set all plugin messages except console outputs and help lists.
+  Messages:
+
+    # This message gets send whenever a player obtains an item.
+    # %ITEM% = The item that was obtained
+    obtained-item: '%PREFIX% &aYou obtained &c%ITEM%'
+
+    # This message gets send to a player who has not got the permission to run a specific command.
+    no-permission: '%PREFIX% &4You are not allowed to execute that command.'
+
+    # This message gets send to a player who has reloaded the config files.
+    reloaded-config: '%PREFIX% &aThe Config has been reloaded.'
+
+
+  # You are able to find all plugin settings here.
+  Settings:
+    
+    # Actionbarmessage for the timer
+    # %TIME% = Time in seconds until next block
+    timer-message: '&cNext item: &a%TIME%'
+
+    # The minimum time before a block is given out to each player (in seconds)
+    # Time will be randomly chosen between from and to
+    time-between-blocks-from: 60
+    
+    # The maximum time before a block is given to each player (in seconds)
+    # Time will be randomly chosen between from and to
+    time-between-blocks-to: 60
+    
+    # Setting this to true will give every player the same item instead of rolling a different one for each player
+    same-for-all: false
+    
+    # Setting this to true will activate the check of the timeditems.getitem permission - players without that permission
+    # will not get any items and will not see the timer
+    enable-item-permission: false
+    
+    # List of obtainable items that will be handed out every minute
+    # Specifying 'ALL' leads to all other listed items being removed
+    # Starting an entry with 'c' leads to a contain clause. Adds/Removes (depending on ALL) items that contain the part after the c 
+    # All material names can be found here (may differ between versions): https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+    possible-items:
+      - ALL
+      - cCOMMAND_BLOCK
+      - KNOWLEDGE_BOOK
+      - BEDROCK
+      - JIGSAW
+      - STRUCTURE_BLOCK
+      - END_PORTAL_FRAME
+      - BARRIER
+      - LIGHT
+      - AIR
+      - STRUCTURE_VOID
+      - SPAWNER
+
+ # Permissionlist:
+ # timeditems.reload: Permission to reload the config.
+ # timeditems.getitem: Permission that is needed to get an item. (Only checked on join and whenever the timer restarts)

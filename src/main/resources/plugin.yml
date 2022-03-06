@@ -1,0 +1,9 @@
+name: TimedItems
+version: 1.0.0
+author: Fabsi23
+main: me.fabsi23.timeditems.TimedItems
+api-version: 1.13
+commands:
+    timeditemsreload:
+        usage: /<command>
+        description: Reloads configuration.
