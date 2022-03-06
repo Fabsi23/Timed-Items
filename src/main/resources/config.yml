@@ -36,7 +36,7 @@ Config:
   Settings:
     
     # Actionbarmessage for the timer
-    # %TIME% = Time in seconds until next block
+    # %TIME% = Time in seconds until the next item is given to each player
     timer-message: '&cNext item: &a%TIME%'
 
     # The minimum time before a block is given out to each player (in seconds)
@@ -61,6 +61,8 @@ Config:
     possible-items:
       - ALL
       - cCOMMAND_BLOCK
+      - cINFESTED
+      - DRAGON_EGG
       - KNOWLEDGE_BOOK
       - BEDROCK
       - JIGSAW
@@ -74,4 +76,4 @@ Config:
 
  # Permissionlist:
  # timeditems.reload: Permission to reload the config.
- # timeditems.getitem: Permission that is needed to get an item. (Only checked on join and whenever the timer restarts)
+ # timeditems.getitem: Permission that is needed to get an item. (Only checked on join and whenever the timer restarts - needs > enable-item-permission: true < to be enabled)
