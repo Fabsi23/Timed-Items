@@ -20,27 +20,24 @@ public class Message {
 
 	public static void sendActionbarAllIfNotVoid(String message) {
 		TextComponent component = new TextComponent(translateColors(message));
-		for (Player player : Bukkit.getOnlinePlayers()) {
+		for (Player player : Bukkit.getOnlinePlayers())
 			sendActionbarIfNotVoid(player, component);
-		}
 	}
 
 	public static void sendActionbarIfNotVoid(Player player, TextComponent component) {
-		if (!component.getText().trim().equals("")) {
+		if (!component.getText().trim().equals(""))
 			player.spigot().sendMessage(ChatMessageType.ACTION_BAR, component);
-		}
 	}
 
 	public static void sendActionbarIfNotVoid(Player player, String message) {
-		if (!(message.trim().equals(""))) {
+		if (!(message.trim().equals("")))
 			player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(translateColors(message)));
-		}
+
 	}
 
 	public static void resetActionbarAll() {
-		for (Player player : Bukkit.getOnlinePlayers()) {
+		for (Player player : Bukkit.getOnlinePlayers())
 			resetActionbar(player);
-		}
 	}
 
 	public static void resetActionbar(Player player) {
