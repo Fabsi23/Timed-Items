@@ -9,45 +9,43 @@ public class Selectors {
 
 	public static List<Material> getValidItems(List<String> items) {
 		boolean all = items.contains("ALL");
-		List<Material> validItems = new ArrayList<>();
-		List<String> contain = new ArrayList<>();
-		for (String typeStr : items) {
-			if (typeStr.startsWith("c")) {
-				contain.add(typeStr.substring(1));
-			}
-		}
-		boolean add;
-		String typeStr;
-		for (Material type : Material.values()) {
-			if (!type.isItem()) // only consider obtainable items
+		List<Material> validMaterials = new ArrayList<>();
+		List<String> contain = getContainList(items);
+		for (Material mat : Material.values()) {
+			if (!mat.isItem())
 				continue;
-			typeStr = type.toString();
-			if (all) {
-				if (items.contains(typeStr))
-					continue;
-				add = true;
-				for (String con : contain) {
-					if (typeStr.contains(con)) {
-						add = false;
-						break;
-					}
-				}
-				if (add)
-					validItems.add(type);
-			} else {
-				if (items.contains(typeStr)) {
-					validItems.add(type);
-					continue;
-				}
-				for (String con : contain) {
-					if (typeStr.contains(con)) {
-						validItems.add(type);
-						break;
-					}
-				}
-			}
+			String materialname = mat.toString();
+			if (isValid(materialname, items, contain, all))
+				validMaterials.add(mat);
 		}
-		return validItems;
+		return validMaterials;
+	}
+	
+	private static List<String> getContainList(List<String> valid) {
+		List<String> contain = new ArrayList<>();
+		for (String validStr : valid) {
+			if (validStr.startsWith("c"))
+				contain.add(validStr.substring(1));
+		}
+		return contain;
 	}
 
+	private static boolean isInAnyContainClause(String str, List<String> contain) {
+		for (String con : contain) {
+			if (str.contains(con))
+				return true;
+		}
+		return false;
+	}
+
+	private static boolean isValid(String str, List<String> valid, List<String> contain, boolean all) {
+		if (all) {
+			if (!valid.contains(str) && !isInAnyContainClause(str, contain))
+				return true;
+		} else {
+			if (valid.contains(str) || isInAnyContainClause(str, contain))
+				return true;
+		}
+		return false;
+	}
 }
